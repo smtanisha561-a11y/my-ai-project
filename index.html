@@ -1,0 +1,153 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Don't Forget AI</title>
+<style>
+:root{--bg:#f4f6fb;--cd:#fff;--tx:#1c2233;--mu:#5b657a;--bd:#e1e6f0;--pr:#4f46e5;--pt:#fff;--sf:#eef0ff;--ok:#0f7d58;--wa:#c42f3d;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0f1220;--cd:#181c2e;--tx:#e8ebf5;--mu:#a3adc4;--bd:#2a3050;--pr:#8b86ff;--pt:#0f1220;--sf:#232848;--ok:#3ddc9a;--wa:#ff7a85;color-scheme:dark}}
+:root[data-theme=dark]{--bg:#0f1220;--cd:#181c2e;--tx:#e8ebf5;--mu:#a3adc4;--bd:#2a3050;--pr:#8b86ff;--pt:#0f1220;--sf:#232848;--ok:#3ddc9a;--wa:#ff7a85;color-scheme:dark}
+*{box-sizing:border-box}[hidden]{display:none!important}
+html,body{height:100%;margin:0}body{background:var(--bg);color:var(--tx);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+#app{max-width:960px;height:100%;margin:auto;display:flex;flex-direction:column;padding:0 12px}
+header{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;padding:12px 0 8px}
+.brand{display:flex;gap:10px;align-items:center}.brand h1{font-size:19px;margin:0;line-height:1.2}.brand p{margin:0;color:var(--mu);font-size:13px}
+.logo{width:40px;height:40px;border-radius:12px;background:var(--pr);display:grid;place-items:center;flex:none}
+button,input,textarea{font:inherit;color:inherit}
+button{cursor:pointer;border:1px solid var(--bd);background:var(--cd);border-radius:10px;padding:7px 12px}
+button:hover{border-color:var(--pr)}button:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid var(--pr);outline-offset:2px}
+.pri{background:var(--pr);color:var(--pt);border-color:var(--pr)}.dng{color:var(--wa)}
+nav{display:flex;gap:4px;background:var(--cd);border:1px solid var(--bd);border-radius:14px;padding:4px}
+nav button{flex:1;border:0;background:none;padding:8px 4px;font-weight:600;color:var(--mu)}
+nav button[aria-selected=true]{background:var(--sf);color:var(--pr)}
+main{flex:1;min-height:0;margin:10px 0 12px;display:flex;flex-direction:column}
+section{flex:1;min-height:0;display:flex;flex-direction:column;overflow:auto}
+#v-chat{overflow:hidden}#log{flex:1;overflow:auto;padding:4px 2px;display:flex;flex-direction:column;gap:12px}
+.m{display:flex;flex-direction:column;max-width:92%}.m.u{align-self:flex-end;align-items:flex-end}.m.b{align-self:flex-start}
+.bub{padding:10px 14px;border-radius:16px;box-shadow:0 1px 3px #0001;white-space:pre-wrap;word-break:break-word}
+.u .bub{background:var(--pr);color:var(--pt);border-bottom-right-radius:4px}.b .bub{background:var(--cd);border:1px solid var(--bd);border-bottom-left-radius:4px;white-space:normal}
+.b .txt{white-space:pre-wrap}.meta{font-size:11.5px;color:var(--mu);margin:3px 6px}
+.dots span{display:inline-block;width:7px;height:7px;margin:0 2px;border-radius:50%;background:var(--mu);animation:bl 1s infinite}.dots span:nth-child(2){animation-delay:.2s}.dots span:nth-child(3){animation-delay:.4s}
+@keyframes bl{0%,60%,100%{opacity:.25}30%{opacity:1}}@media(prefers-reduced-motion:reduce){.dots span{animation:none}}
+.card{background:var(--cd);border:1px solid var(--bd);border-radius:14px;padding:12px;margin-top:10px;box-shadow:0 1px 4px #0001;min-width:min(300px,100%)}
+.ch{display:flex;justify-content:space-between;gap:8px;align-items:center}.tag{background:var(--sf);color:var(--pr);border-radius:20px;padding:1px 10px;font-size:12px;font-weight:600}
+.prog{height:8px;background:var(--bd);border-radius:8px;overflow:hidden;margin:8px 0 2px}.prog div{height:100%;background:var(--ok);transition:width .3s}
+.cnt,.mu{color:var(--mu);font-size:13px}ul{list-style:none;padding:0;margin:8px 0}
+.card li{display:flex;align-items:center;gap:6px;padding:4px 0;border-bottom:1px dashed var(--bd)}.card li label{flex:1;display:flex;gap:8px;align-items:center;cursor:pointer}
+.card li button{padding:1px 6px;border:0;background:none}em{font-size:11px;color:var(--mu);border:1px solid var(--bd);border-radius:10px;padding:0 6px}
+input[type=checkbox]{width:18px;height:18px;accent-color:var(--pr);flex:none}.dn{text-decoration:line-through;color:var(--mu)}
+.acts{display:flex;gap:6px;flex-wrap:wrap}.acts button{font-size:13px;padding:5px 10px}
+#sug{background:var(--cd);border:1px solid var(--bd);border-radius:14px;padding:10px;margin:8px 0;max-height:36vh;overflow:auto}
+#sug h3{margin:6px 0 6px;font-size:13px;color:var(--mu)}.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{background:var(--sf);border-color:transparent;border-radius:20px;font-size:13.5px;text-align:left}
+#cf{display:flex;gap:8px;align-items:center}#ci{flex:1;padding:11px 14px;border-radius:24px;border:1px solid var(--bd);background:var(--cd)}
+.panel{background:var(--cd);border:1px solid var(--bd);border-radius:14px;padding:14px;margin-bottom:12px}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+form.g{display:grid;grid-template-columns:1fr 1fr;gap:10px}form.g .f{grid-column:1/-1}
+label.l{display:flex;flex-direction:column;font-size:13px;color:var(--mu);gap:3px}
+input[type=text],input[type=date],input[type=time],input[type=search]{padding:9px 10px;border:1px solid var(--bd);border-radius:10px;background:var(--bg);width:100%}
+.err{color:var(--wa);font-size:13px;min-height:18px}
+h2{font-size:15px;margin:14px 0 6px}.task{display:flex;gap:10px;align-items:flex-start;background:var(--cd);border:1px solid var(--bd);border-radius:12px;padding:10px;margin-bottom:6px}
+.task>div{flex:1}.task.over{border-left:4px solid var(--wa)}.task.up{border-left:4px solid var(--pr)}.task.done{border-left:4px solid var(--ok)}
+.seg{display:flex;gap:4px}.seg button[aria-pressed=true]{background:var(--pr);color:var(--pt);border-color:var(--pr)}
+.empty{text-align:center;color:var(--mu);padding:26px 10px;border:2px dashed var(--bd);border-radius:14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:10px}
+#toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--tx);color:var(--bg);padding:9px 16px;border-radius:24px;z-index:30;max-width:90%;text-align:center}
+#modal{position:fixed;inset:0;background:#0008;display:grid;place-items:center;z-index:40;padding:16px}
+#modal>div{background:var(--cd);border-radius:16px;padding:18px;width:min(380px,100%)}#modal h3{margin:0 0 6px}#mi{margin:8px 0}
+@media(max-width:560px){form.g{grid-template-columns:1fr}.brand p{font-size:12px}.m{max-width:98%}}
+</style></head><body><div id="app">
+<header><div class="brand"><div class="logo" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/><path d="M8.5 10.5l2.5 2.5 4.5-5"/></svg></div><div><h1>Don't Forget AI</h1><p>Your everyday memory assistant</p></div></div>
+<div class="acts"><button id="tbtn" type="button">🌙 Dark</button><button id="nbtn" aria-pressed="false">🔔 Notifications: off</button><button id="newc">＋ New chat</button></div></header>
+<nav role="tablist" aria-label="Sections"><button role="tab" data-t="chat">💬 Chat</button><button role="tab" data-t="tasks">⏰ Tasks</button><button role="tab" data-t="lists">✅ Checklists</button><button role="tab" data-t="hist">🕘 History</button></nav>
+<main>
+<section id="v-chat" role="tabpanel"><div id="log" aria-live="polite" aria-label="Conversation"></div>
+<div id="sug"></div>
+<form id="cf"><button type="button" id="sbtn" aria-label="Show or hide sample questions" title="Sample questions">💡</button><input id="ci" type="text" autocomplete="off" maxlength="300" placeholder="Ask e.g. What should I carry to college tomorrow?" aria-label="Message"><button class="pri" aria-label="Send message">Send ➤</button></form></section>
+<section id="v-tasks" role="tabpanel" hidden>
+<div class="panel"><form class="g" id="tf" novalidate><label class="l f">Title *<input type="text" id="tt" maxlength="100"></label><label class="l f">Description (optional)<input type="text" id="tdsc" maxlength="200"></label><label class="l">Date *<input type="date" id="td"></label><label class="l">Time *<input type="time" id="tm"></label>
+<div class="f row"><span class="err" id="terr" role="alert"></span><span class="acts"><button type="button" id="tcx" hidden>Cancel edit</button><button class="pri" id="tsub">Add reminder</button></span></div></form>
+<p class="mu" style="margin:6px 0 0">Browser notifications only fire while this page stays open in a tab; there is no background service. In-app alerts appear too.</p></div>
+<div class="row"><b>Your tasks</b><div class="seg" id="seg"><button data-f="all">All</button><button data-f="pending">Pending</button><button data-f="done">Completed</button></div></div><div id="tl"></div></section>
+<section id="v-lists" role="tabpanel" hidden><div class="row panel"><input type="search" id="lq" placeholder="Search saved checklists…" aria-label="Search saved checklists" style="flex:1;min-width:160px"><button class="pri" id="nl">＋ New checklist</button></div><div id="ll" class="grid"></div></section>
+<section id="v-hist" role="tabpanel" hidden><div class="row panel"><span class="mu">Clearing history never deletes your tasks or saved checklists.</span><button class="dng" id="clr">Clear all history</button></div><div id="hl"></div></section>
+</main></div>
+<div id="toast" role="status" hidden></div>
+<div id="modal" hidden role="dialog" aria-modal="true" aria-labelledby="mt"><div><h3 id="mt"></h3><div id="mm" class="mu"></div><input type="text" id="mi" maxlength="100" aria-label="Value"><div class="acts" style="justify-content:flex-end;margin-top:8px"><button id="mcx">Cancel</button><button class="pri" id="mok">OK</button></div></div></div>
+<script>
+"use strict";
+const K="dontforgetai.v1",$=s=>document.querySelector(s),A=x=>Array.isArray(x)?x:[],pad=n=>String(n).padStart(2,"0");
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,6);
+const fmt=d=>new Date(d).toLocaleString([],{dateStyle:"medium",timeStyle:"short"}),hm=t=>new Date(t).toLocaleTimeString([],{hour:"numeric",minute:"2-digit"});
+const ymd=d=>d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate());
+/* ---- Templates: "~" marks optional items ---- */
+const T={
+college:["College bag checklist","College","College ID card|Notebooks & textbooks|Pens & stationery|Assignments / lab records|Laptop or tablet|Phone & charger|Water bottle|Wallet & cash/UPI|~Lunch or snacks|~Earphones|~Umbrella (check the weather)"],
+exam:["Exam day essentials","Exam","Hall ticket / ID card|2–3 spare pens|Pencil, eraser, sharpener|Calculator or geometry box (if allowed)|Water bottle|Wrist watch|Reach the venue 30 min early|~Last-look revision notes|~Light snack or glucose|~Transparent pouch"],
+assign:["Before submitting your assignment","College","Re-read the question & requirements|Answer every question/section|Proofread spelling & grammar|Check formatting & page limit|Add name, roll no. & date|Save a backup copy|Confirm submission format & deadline|~Add references / citations|~Run a plagiarism check|~Ask a friend to review"],
+gadget:["College gadgets & accessories","College","Phone & charger|Laptop & charger|Power bank|Earphones / headphones|Pen drive|~Calculator|~Extension cable|~Mouse|~Smartwatch"],
+trip2:["Two-day trip packing list","Travel","ID proof & tickets|Phone, charger & power bank|Wallet, cash & cards|2 sets of clothes|Toiletries|Medicines & first-aid|Comfortable footwear|Water bottle|~Camera|~Snacks|~Sunglasses / cap"],
+wknd:["Weekend trip packing list","Travel","ID proof & booking confirmations|Phone, charger & power bank|Wallet, cash & cards|3 outfits + night wear|Toiletries|Medicines|Comfortable footwear|Water bottle|~Book or headphones|~Light jacket|~Snacks|~Sunscreen"],
+abroad:["Documents for international travel","Travel","Passport (6+ months validity)|Visa / e-visa|Flight tickets (incl. return)|Travel insurance|Accommodation bookings|Foreign currency / forex card|Emergency contacts|Passport-size photos|~Scans of all documents|~Vaccination certificates (if required)|~International driving licence"],
+rain:["Rainy day essentials","Outdoor","Umbrella or raincoat|Waterproof pouch for phone|Waterproof cover for bag|Non-slip footwear|Wallet & keys|~Extra pair of socks|~Towel or tissues|~Power bank"],
+meet:["Important meeting prep","Meeting","Review agenda & goal|Prepare key talking points|Slides / documents ready|Test laptop, projector & internet|Meeting link or room confirmed|Notebook & pen|Join 10 min early|~Questions to ask|~Water bottle|~Follow-up action list"],
+office:["Before heading to the office","Office","ID badge / access card|Laptop & charger|Work documents|Phone & charger|Wallet & keys|Lunch & water bottle|Check today's meetings|~Earphones|~Notebook & pen|~Umbrella"],
+eod:["End-of-day wrap-up","Office","Finish today's top priorities|Reply to pending messages|Save & submit today's work|Charge phone & laptop|Pack your bag for tomorrow|Review tomorrow's plan|~Note one win from today|~Tidy your desk"],
+tmr:["Tomorrow's prep","Daily","Check tomorrow's schedule|Review deadlines|Prepare bag & clothes|Charge your devices|Set an alarm|~Plan meals|~Early night"],
+gym:["Gym session bag","Gym","Workout clothes|Sports shoes|Towel|Water bottle|Gym membership card|Headphones|Lock|~Toiletries & deodorant|~Protein shake or snack|~Change of clothes|~Gloves"],
+shop:["Supermarket list","Shopping","Milk & eggs|Vegetables & fruits|Rice, flour & pulses|Cooking oil & spices|Bread & snacks|Toiletries & cleaning supplies|Reusable shopping bag|Wallet / payment app|~Check your pantry first|~Beverages|~Fresh herbs"],
+doc:["Doctor visit essentials","Health","Appointment details|ID & insurance card|Previous reports & prescriptions|List of current medicines|List of symptoms & questions|Wallet & payment method|Phone & charger|~Family medical history notes|~Water bottle|~Someone to accompany you"],
+bday:["Birthday party prep","Party","Gift (wrapped)|Greeting card|Party outfit|Confirm time & venue|Wallet & cash|Phone & charger|Transport arranged|~Camera / photos|~Cake or snacks to bring|~Return gift"],
+house:["Before leaving the house","Home","Keys|Wallet|Phone|Switch off lights & fans|Turn off gas / stove|Close windows|Lock the door|~Switch off geyser & AC|~Take out the trash|~Water the plants"],
+shopping:["Shopping essentials","Shopping","Wallet, cards & cash|Phone & payment app|Shopping list|Reusable bags|~Discount coupons|~Size notes for family|~Comfortable footwear|~Power bank"],
+todo:["Daily to-do list","Daily","Top 3 priorities for today|Reply to important messages|Attend classes / meetings|Finish pending work or assignments|Take medicines|~Walk or exercise 20 min|~Plan tomorrow|~Call family|~Read for 15 minutes"]};
+/* ---- Keyword intent detection (order matters) ---- */
+const R=[[/exam/,"exam"],[/assignment|submit/,"assign"],[/gadget|accessor/,"gadget"],[/college|class|campus/,"college"],[/abroad|passport|international/,"abroad"],[/two.?day|2.?day/,"trip2"],[/weekend/,"wknd"],[/rain|umbrella/,"rain"],[/meeting/,"meet"],[/pending|remind me about/,"pending"],[/end of (the )?day|before i sleep/,"eod"],[/tomorrow/,"tmr"],[/office|work\b/,"office"],[/gym|workout/,"gym"],[/supermarket|grocer/,"shop"],[/doctor|clinic|hospital/,"doc"],[/birthday|party/,"bday"],[/leaving.*(house|home)|check.*(house|home)/,"house"],[/shopping|mall/,"shopping"],[/to-?do|daily plan|plan my day/,"todo"]];
+const G=[["🎓 College & exams",["What should I carry to college tomorrow?","What items do I need for my exam?","What should I complete before submitting my assignment?","What gadgets and accessories should I carry for college?"]],
+["🧳 Travel & outdoors",["What should I pack for a two-day trip?","What documents should I carry before travelling abroad?","What should I carry when going out on a rainy day?","What should I pack for a weekend trip?"]],
+["💼 Office & productivity",["What should I remember before going to the office?","What should I prepare before an important meeting?","Remind me about my pending tasks.","What tasks should I complete before the end of the day?","What important tasks do I need to do tomorrow?"]],
+["🏠 Daily life",["What should I pack for my gym session?","What items should I buy from the supermarket?","What essentials should I carry when visiting a doctor?","What should I prepare for a birthday party?","What should I check before leaving my house?","What essentials should I carry when going shopping?","Help me create my daily to-do list."]]];
+/* ---- State & storage ---- */
+let S={convs:[],cur:null,tasks:[],lists:[],notify:false,theme:null},typing=0,filt="all",editT=null,tab="chat",showSug=false,bad=false;
+const cl=l=>{l.items=A(l.items).filter(i=>i&&typeof i.t==="string");return l};
+try{const raw=localStorage.getItem(K);if(raw){const d=JSON.parse(raw);
+S.convs=A(d.convs).filter(c=>c&&c.id&&Array.isArray(c.msgs));
+S.convs.forEach(c=>{c.msgs=c.msgs.filter(m=>m&&typeof m.text==="string"&&(m.role==="user"||m.role==="bot"));c.msgs.forEach(m=>{if(m.list)m.list=m.list.items?cl(m.list):undefined})});
+S.lists=A(d.lists).filter(l=>l&&l.id&&Array.isArray(l.items)).map(cl);
+S.tasks=A(d.tasks).filter(t=>t&&t.id&&t.title&&t.due&&!isNaN(new Date(t.due)));
+S.cur=d.cur||null;S.notify=!!d.notify;S.theme=d.theme==="dark"||d.theme==="light"?d.theme:null}}catch(e){bad=true}
+const save=()=>{try{localStorage.setItem(K,JSON.stringify(S))}catch(e){toast("Storage unavailable — changes won't persist after refresh.")}};
+const cur=()=>S.convs.find(c=>c.id===S.cur);
+let tt;function toast(m){const t=$("#toast");t.textContent=m;t.hidden=false;clearTimeout(tt);tt=setTimeout(()=>t.hidden=true,3200)}
+function ask(o){return new Promise(res=>{$("#mt").textContent=o.title;$("#mm").textContent=o.msg||"";const i=$("#mi");i.hidden=!o.input;i.value=o.value||"";$("#mok").textContent=o.ok||"OK";$("#mok").className=o.danger?"pri dng":"pri";$("#modal").hidden=false;(o.input?i:$("#mcx")).focus();
+const done=v=>{$("#modal").hidden=true;$("#modal").onkeydown=null;res(v)};
+$("#mok").onclick=()=>{if(o.input&&!i.value.trim())return i.focus();done(o.input?i.value.trim():true)};$("#mcx").onclick=()=>done(null);
+$("#modal").onkeydown=e=>{if(e.key==="Escape")done(null);if(e.key==="Enter"&&o.input)$("#mok").click()}})}
+/* ---- Chatbot ---- */
+function mkList(k){const[t,c,s]=T[k];return{title:t,cat:c,items:s.split("|").map(x=>({t:x.replace(/^~/,""),opt:x[0]==="~",done:false})).sort((a,b)=>a.opt-b.opt)}}
+const byDue=(a,b)=>new Date(a.due)-new Date(b.due),line=t=>"• "+t.title+" — "+fmt(t.due)+(new Date(t.due)<new Date()?" (overdue)":"");
+function dayTasks(off){const d=new Date();d.setDate(d.getDate()+off);return S.tasks.filter(t=>!t.done&&new Date(t.due).toDateString()===d.toDateString()).sort(byDue)}
+function reply(q){const s=q.toLowerCase(),k=(R.find(r=>r[0].test(s))||[])[1];
+if(k==="pending"){const p=S.tasks.filter(t=>!t.done).sort(byDue);return p.length?{text:"You have "+p.length+" pending task"+(p.length>1?"s":"")+":\n"+p.slice(0,8).map(line).join("\n")+(p.length>8?"\n…and more in the Tasks tab.":""),act:{label:"Open Tasks",tab:"tasks"}}:{text:"You have no pending tasks right now 🎉 Want to add one?",act:{label:"＋ Add a reminder",tab:"tasks"}}}
+if(k==="eod"||k==="tmr"){const d=dayTasks(k==="eod"?0:1),w=k==="eod"?"today":"tomorrow";return{text:(d.length?"Saved tasks due "+w+":\n"+d.map(line).join("\n")+"\n\nAnd a checklist to go with it:":"No saved tasks are due "+w+". You can add some in the Tasks tab — here's a quick checklist meanwhile:"),list:mkList(k),act:d.length?null:{label:"＋ Add a reminder",tab:"tasks"}}}
+if(k)return{text:"Here's your "+T[k][1].toLowerCase()+" checklist. Essentials come first; optional extras are marked. Tick items off, add your own, or save it for later.",list:mkList(k)};
+if(/^(remind me|set (a )?reminder|add (a )?(task|reminder))/.test(s)){const t=q.replace(/^(remind me( to| about)?|set (a )?reminder( to| for| about)?|add (a )?(task|reminder)( to| for| about)?)\s*/i,"").replace(/[.?!]+$/,"");return{text:"I haven't scheduled anything yet. Tap below to choose a date and time — the reminder is only saved when you confirm it.",act:{label:"Create reminder",tab:"tasks",title:t.charAt(0).toUpperCase()+t.slice(1)}}}
+if(/^(hi|hello|hey|thanks|thank you)\b/.test(s))return{text:"Hi! 👋 I'm your daily-life organiser. Tell me what you're doing (college, gym, a trip…) and I'll build a checklist. Tap 💡 for ideas."};
+if(/trip|travel|pack/.test(s))return{text:"Happy to help! Is it a two-day trip, a weekend getaway, or travel abroad?"};
+return{text:"I'm built for reminders, checklists and everyday planning, so I can't help with that one. Try asking about college, exams, office, travel, gym, shopping or your to-do list.",sug:true}}
+function send(txt){txt=(txt||"").trim();if(!txt){toast("Type a message first.");return}
+let c=cur();if(!c){c={id:uid(),started:Date.now(),msgs:[]};S.convs.unshift(c);S.cur=c.id}
+c.msgs.push({id:uid(),role:"user",text:txt,time:Date.now()});showSug=false;typing++;save();render(1);
+setTimeout(()=>{const r=reply(txt);typing--;const cc=S.convs.find(x=>x.id===c.id);if(cc){const m={id:uid(),role:"bot",text:r.text,time:Date.now()};if(r.list)m.list=r.list;if(r.act)m.act=r.act;cc.msgs.push(m);if(r.sug)showSug=true}save();render(1)},650)}
+/* ---- Checklist cards ---- */
+function card(l,ref,saved){const n=l.items.length,d=l.items.filter(i=>i.done).length,p=n?Math.round(d/n*100):0;
+return`<div class="card" data-ref="${esc(ref)}"><div class="ch"><b>${esc(l.title)}</b><span class="tag">${esc(l.cat||"Custom")}</span></div><div class="prog" role="progressbar" aria-valuenow="${p}" aria-valuemin="0" aria-valuemax="100" aria-label="Progress"><div style="width:${p}%"></div></div><div class="cnt">${d} completed · ${n-d} pending · ${p}%</div>
+<ul>${l.items.map((i,x)=>`<li><label><input type="checkbox" data-a="tog" data-i="${x}"${i.done?" checked":""}><span class="${i.done?"dn":""}">${esc(i.t)}</span></label>${i.opt?"<em>optional</em>":""}<button data-a="edit" data-i="${x}" aria-label="Edit ${esc(i.t)}">✏️</button><button data-a="del" data-i="${x}" aria-label="Delete ${esc(i.t)}">🗑️</button></li>`).join("")||'<li class="mu">No items yet — add your first one.</li>'}</ul>
+<div class="acts"><button data-a="add">＋ Add item</button><button data-a="reset">↺ Reset</button>${saved?'<button data-a="ren">Rename</button><button data-a="use" class="pri">Use in chat</button><button data-a="dl" class="dng">Delete</button>':`<button data-a="save" class="pri">${l.savedId&&S.lists.some(x=>x.id===l.savedId)?"💾 Update saved":"💾 Save checklist"}</button>`}</div></div>`}
+function getL(ref){const[t,id]=ref.split(":");if(t==="s")return S.lists.find(l=>l.id===id);const c=cur(),m=c&&c.msgs.find(m=>m.id===id);return m&&m.list}
+function sync(l){const sid=l.savedId||l.id,s=S.lists.find(x=>x.id===sid);if(!s)return;const all=[];S.convs.forEach(c=>c.msgs.forEach(m=>{if(m.list&&m.list.savedId===sid)all.push(m.list)}));
+[s,...all].forEach(x=>{if(x!==l){x.items=JSON.parse(JSON.stringify(l.items));x.title=l.title}})}
+/* ---- Rendering ---- */
+function render(bottom){renderChat(bottom);renderTasks();renderLists();renderHist();
+document.querySelectorAll("nav button").forEach(b=>b.setAttribute("aria-selected",b.dataset.t===tab));
+["chat","tasks","lists","hist"].forEach(t=>$("#v-"+t).hidden=t!==tab)}
+function msgHTML(m){return`<div class="m ${m.role==="user"?"u":"b"}"><div class="bub"><div class="txt">${esc(m.text)}</div>${m.list?card(m.list,"m:"+m.id):""}${m.act?`<div class="acts" style="margin-top:8px"><button class="pri" data-a="act" data-m="${esc(m.id)}">${esc(m.act.label)}</button></div>`:""}</div><div class="meta">${m.role==="user"?"You":"Don't Forget"} · ${hm(m.time)}</div></div>`}
+function renderChat(bottom){const L=$("#log"),sc=L.scrollTop,c=cur(),ms=c?c.msgs:[];
+L.innerHTML=(ms.length?"":`<div class="m b"><div class="bub"><div class="txt">Hi! I'm Don't Forget AI 👋 Tell me what you're up to — college, a trip, the gym — and I'll prepare a checklist so nothing gets left behind. Pick a sample question below to start.</div></div></div>`)+ms.map(msgHTML).join("")+(typing?`<div class="m b"><div class="bub dots" aria-label="Assistant is typing"><span></span><span></span><span></span>
