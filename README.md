@@ -33,11 +33,14 @@ Don't Forget AI is a simple web app designed to help users organize daily tasks,
 
 ## Screenshots
 
-![Screenshot 1](screenshot-home.png)
+### Chat Screen
+![Chat Screen](screenshot_chat.png)
 
-![Screenshot 2](screenshot-tasks.png)
+### Tasks Screen
+![Tasks Screen](Screenshot_task.png)
 
-![Screenshot 3](screenshot-checklist.png)
+### Checklist Screen
+![Checklist Screen](Screenshot_checklist.png)
 
 ## Future Improvements
 
