@@ -31,9 +31,13 @@ Don't Forget AI is a simple web app designed to help users organize daily tasks,
 
 [Try Don't Forget AI on Claude](https://claude.ai/artifact/B9X8A8RUaeNDrtUXp3CFoJ)
 
-## Screenshot
+## Screenshots
 
-Add a screenshot of the application here after uploading it to this repository.
+![Screenshot 1](screenshot-home.png)
+
+![Screenshot 2](screenshot-tasks.png)
+
+![Screenshot 3](screenshot-checklist.png)
 
 ## Future Improvements
 
